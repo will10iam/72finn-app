@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 export function Login() {
 	const [email, setEmail] = useState("");
@@ -11,7 +12,7 @@ export function Login() {
 
 	const router = useRouter();
 	const searchParams = useSearchParams();
-	const callbackUrl = searchParams.get("callbackUrl") || "/";
+	const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
 
 	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
@@ -61,6 +62,12 @@ export function Login() {
 					Entrar
 				</button>
 			</form>
+			<p>
+				Ainda não tem uma conta?{" "}
+				<Link href="/register" className="text-green-600 underline">
+					Cadastrar
+				</Link>
+			</p>
 		</main>
 	);
 }

@@ -1,9 +1,8 @@
-import { Login } from "./_components/login";
-
 export default function Home() {
 	return (
 		<main>
-			<Login />
+			<h1>72finn</h1>
+			<p>Logar</p>
 		</main>
 	);
 }
