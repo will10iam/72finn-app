@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "../../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 
 export default async function DashboardPage() {
@@ -10,9 +10,8 @@ export default async function DashboardPage() {
 	}
 
 	return (
-		<main className="p-4">
-			<h1 className="text-2xl font-bold">Bem vindo, {session.user?.name}</h1>
-			<p className="mt-2">Você está logado, sucesso!</p>
+		<main className="pl-20 lg:p-4 flex flex-col items-center justify-center">
+			<h1 className="text-3xl font-bold">Bem vindo, {session.user?.name}</h1>
 		</main>
 	);
 }
