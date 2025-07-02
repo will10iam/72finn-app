@@ -2,16 +2,24 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import {
+	Menu,
+	X,
+	LayoutDashboard,
+	TrendingUp,
+	ArrowDownCircle,
+	PiggyBank,
+	Settings,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import LogoutButton from "@/app/_components/logOutButton";
 
 const navItems = [
-	{ label: "Dashboard", href: "/dashboard" },
-	{ label: "Receitas", href: "/receitas" },
-	{ label: "Despesas", href: "/despesas" },
-	{ label: "Investimentos", href: "/investimentos" },
-	{ label: "Configurações", href: "/configuracoes" },
+	{ label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+	{ label: "Receitas", href: "/receitas", icon: TrendingUp },
+	{ label: "Despesas", href: "/despesas", icon: ArrowDownCircle },
+	{ label: "Investimentos", href: "/investimentos", icon: PiggyBank },
+	{ label: "Configurações", href: "/configuracoes", icon: Settings },
 ];
 
 export default function Sidebar() {
@@ -30,8 +38,8 @@ export default function Sidebar() {
 			{/*Sidebar */}
 			<aside
 				className={cn(
-					"fixed top-0 left-0 h-full lg:h-screen bg-zinc-900 text-white p-4 flex flex-col justify-between transform transition-transform duration-300 z-40",
-					open ? "w-64 translate-x-0" : "w-20 -translate-x-full",
+					"fixed top-0 left-0 h-full lg:h-screen bg-zinc-900 text-white p-4 flex flex-col justify-between transform transition-all duration-300 z-40",
+					open ? "w-64 translate-x-0" : "w-20",
 					"lg:translate-x-0 lg:static"
 				)}
 			>
@@ -39,7 +47,7 @@ export default function Sidebar() {
 					{/* Botão desktop (lg+) */}
 					<button
 						onClick={() => setOpen(!open)}
-						className="hidden lg:block p-2 mb-4 bg-zinc-800 rounded-md hover:bg-zinc-700 transition"
+						className="hidden lg:block p-2 mb-4 rounded-md transition"
 					>
 						{open ? <X /> : <Menu />}
 					</button>
@@ -52,21 +60,22 @@ export default function Sidebar() {
 						72finn
 					</h2>
 					<nav className="flex flex-col gap-2">
-						{navItems.map((item) => (
+						{navItems.map(({ href, label, icon: Icon }) => (
 							<Link
-								key={item.href}
-								href={item.href}
-								className="p-2 rounded hover:bg-zinc-800 transition flex items-center"
+								key={href}
+								href={href}
+								className="p-2 rounded hover:bg-zinc-800 transition flex items-center gap-2"
 								onClick={() => setOpen(false)}
 							>
+								<Icon size={25} />
 								{/* Label que desaparece quando sidebar está fechado */}
 								<span
 									className={cn(
 										"transition-all duration-300",
-										open ? "opacity-100 ml-2" : "opacity-0 w-0"
+										open ? "opacity-100" : "opacity-0 hidden"
 									)}
 								>
-									{item.label}
+									{label}
 								</span>
 							</Link>
 						))}
