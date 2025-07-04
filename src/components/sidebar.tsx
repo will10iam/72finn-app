@@ -23,14 +23,14 @@ const navItems = [
 ];
 
 export default function Sidebar() {
-	const [open, setOpen] = useState(true);
+	const [open, setOpen] = useState(false);
 
 	return (
 		<div className="relative">
 			{/* Botão mobile */}
 			<button
 				onClick={() => setOpen(!open)}
-				className="lg:hidden p-2 m-2 z-50 fixed top-2 left-2 bg-white rounded-md shadow"
+				className="lg:hidden p-2 m-2 z-50 fixed top-2 left-2 rounded-md shadow"
 			>
 				{open ? <X /> : <Menu />}
 			</button>
@@ -53,7 +53,7 @@ export default function Sidebar() {
 					</button>
 					<h2
 						className={cn(
-							"text-2xl font-bold mb-6 transition-all",
+							"text-2xl font-bold mt-12 md:mt-4 mb-6 transition-all",
 							!open && "opacity-0"
 						)}
 					>

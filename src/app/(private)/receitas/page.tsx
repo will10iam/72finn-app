@@ -16,7 +16,7 @@ export default async function ReceitasPage() {
 				{session.user?.name}, essas são as suas receitas
 			</h1>
 
-			<div>
+			<div className="w-full flex justify-start mt-4">
 				<AdicionarReceitaButton />
 			</div>
 
